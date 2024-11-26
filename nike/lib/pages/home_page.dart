@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:nike/components/drawer.dart';
 import 'package:nike/components/mainbody.dart';
 import 'package:nike/components/nike_max.dart';
+import 'package:nike/components/nike_sport.dart';
 import 'package:nike/components/toggle_widget.dart';
-import 'package:nike/components/mainimages.dart'; // Import the widget
+import 'package:nike/components/mainimages.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,6 +34,7 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.all(8.0),
@@ -44,7 +46,8 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 10.0),
             const NikeShoesWidget(),
             NikeBody(),
-            NikeMax(), // Add NikeMax here
+            NikeMax(),
+            const NikeSport(),
           ],
         ),
       ),

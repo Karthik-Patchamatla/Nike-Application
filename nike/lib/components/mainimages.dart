@@ -9,7 +9,7 @@ class NikeShoesWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Align the heading to the left
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
             "This Week's Highlights",

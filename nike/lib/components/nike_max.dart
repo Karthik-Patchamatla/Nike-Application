@@ -9,7 +9,7 @@ class NikeMax extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 2.0,
         ),
         const Padding(
@@ -44,7 +44,7 @@ class NikeMax extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, // Display 3 items per row
+                crossAxisCount: 3,
                 crossAxisSpacing: 2.0,
                 mainAxisSpacing: 2.0,
               ),
