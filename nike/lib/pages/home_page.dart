@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nike/components/drawer.dart';
 import 'package:nike/components/mainbody.dart';
+import 'package:nike/components/nike_color.dart';
 import 'package:nike/components/nike_max.dart';
 import 'package:nike/components/nike_sport.dart';
 import 'package:nike/components/toggle_widget.dart';
@@ -18,7 +19,8 @@ class HomePage extends StatelessWidget {
         title: const Text(
           'Shop',
           style: TextStyle(
-            fontSize: 19.0,
+            fontSize: 18.0,
+            fontWeight: FontWeight.w500,
           ),
         ),
         actions: [
@@ -45,9 +47,13 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 10.0),
             const NikeShoesWidget(),
+            const SizedBox(height: 30.0),
             NikeBody(),
+            const SizedBox(height: 20.0),
             NikeMax(),
+            const SizedBox(height: 10.0),
             const NikeSport(),
+            const NikeColor(),
           ],
         ),
       ),

@@ -27,11 +27,12 @@ class NikeBody extends StatelessWidget {
 
         return ListView.builder(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(), // Prevents scroll conflict
           padding: const EdgeInsets.symmetric(vertical: 7.0),
           itemCount: documents.length,
           itemBuilder: (context, index) {
             var item = documents[index];
-            var imageUrl = item['image'];
+            var imageUrl = item['image']; // 'image' field contains the image URL
 
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0),
