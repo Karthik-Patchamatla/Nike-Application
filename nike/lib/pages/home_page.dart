@@ -4,6 +4,7 @@ import 'package:nike/components/mainbody.dart';
 import 'package:nike/components/nike_color.dart';
 import 'package:nike/components/nike_max.dart';
 import 'package:nike/components/nike_sport.dart';
+import 'package:nike/components/nike_store.dart';
 import 'package:nike/components/toggle_widget.dart';
 import 'package:nike/components/mainimages.dart';
 
@@ -54,6 +55,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 10.0),
             const NikeSport(),
             const NikeColor(),
+            const NikeStore(),
           ],
         ),
       ),

@@ -47,7 +47,7 @@ class NikeColor extends StatelessWidget {
                     final imageUrl = doc['image']; // Field: image
 
                     return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start, // Align to start
                         children: [
