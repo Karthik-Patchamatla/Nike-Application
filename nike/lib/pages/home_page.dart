@@ -32,12 +32,12 @@ class HomePage extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: ToggleWidget(), // Use the ToggleWidget here
+            child: ToggleWidget(),
           ),
-          // Add other widgets here if needed
         ],
       ),
       drawer: const CustomDrawer(),
+      
     );
   }
 }
