@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nike/components/drawer.dart';
+import 'package:nike/components/mainbody.dart';
+import 'package:nike/components/nike_max.dart';
 import 'package:nike/components/toggle_widget.dart';
+import 'package:nike/components/mainimages.dart'; // Import the widget
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -28,16 +31,24 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: ToggleWidget(),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: ToggleWidget(),
+              ),
+            ),
+            const SizedBox(height: 10.0),
+            const NikeShoesWidget(),
+            NikeBody(),
+            NikeMax(), // Add NikeMax here
+          ],
+        ),
       ),
       drawer: const CustomDrawer(),
-      
     );
   }
 }

@@ -8,7 +8,7 @@ class ToggleWidget extends StatefulWidget {
 }
 
 class _ToggleWidgetState extends State<ToggleWidget> {
-  bool _isOn = false;
+  bool _isOn = true;
 
   @override
   Widget build(BuildContext context) {
