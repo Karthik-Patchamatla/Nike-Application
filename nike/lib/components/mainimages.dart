@@ -43,10 +43,10 @@ class NikeShoesWidget extends StatelessWidget {
               return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start, // Align all items at the top
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: documents.map((doc) {
-                    var name = doc['name']; // Fetch name
-                    var imageUrl = doc['image']; // Fetch image URL
+                    var name = doc['name'];
+                    var imageUrl = doc['image'];
 
                     return Padding(
                       padding: const EdgeInsets.only(right: 5.0),

@@ -51,7 +51,7 @@ class NikeMax extends StatelessWidget {
               itemCount: documents.length,
               itemBuilder: (context, index) {
                 var item = documents[index];
-                var imageUrl = item['image']; // Fetch the image URL
+                var imageUrl = item['image'];
 
                 return Container(
                   decoration: BoxDecoration(
