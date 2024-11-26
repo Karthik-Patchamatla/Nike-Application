@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nike/pages/just_dropped.dart';
 
 class NikeShoesWidget extends StatelessWidget {
   const NikeShoesWidget({super.key});
@@ -18,14 +19,12 @@ class NikeShoesWidget extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 10.0), // Add some spacing between the heading and the content
-          
-          // FutureBuilder to fetch data from Firestore
+          const SizedBox(height: 10.0),
+
           FutureBuilder<QuerySnapshot>(
             future: FirebaseFirestore.instance.collection('nike').get(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                // Show loading indicator without hiding heading
                 return const Center(child: CircularProgressIndicator());
               }
 
@@ -33,7 +32,6 @@ class NikeShoesWidget extends StatelessWidget {
                 return Center(child: Text('Error: ${snapshot.error}'));
               }
 
-              // Get the documents from Firestore
               final documents = snapshot.data?.docs;
 
               if (documents == null || documents.isEmpty) {
@@ -47,32 +45,118 @@ class NikeShoesWidget extends StatelessWidget {
                   children: documents.map((doc) {
                     var name = doc['name'];
                     var imageUrl = doc['image'];
+                    var route = doc['route']; // Fetch route field from Firestore
 
                     return Padding(
                       padding: const EdgeInsets.only(right: 5.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.network(
-                            imageUrl,
-                            width: 190.0,
-                            height: 190.0,
-                            fit: BoxFit.cover,
-                          ),
-                          const SizedBox(height: 2.0),
-                          SizedBox(
-                            width: 190.0,
-                            child: Text(
-                              name,
-                              style: const TextStyle(
-                                fontSize: 13.0,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
-                              textAlign: TextAlign.start,
+                      child: GestureDetector(
+                        onTap: () {
+                          // Navigate to specific pages based on the route
+                          switch (route) {
+                            case 'main':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => JustDropped(
+                                    name: name,
+                                  ),
+                                ),
+                              );
+                              break;
+                            case 'main1':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CartPage(),
+                                ),
+                              );
+                              break;
+                            case 'main2':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OffersPage(),
+                                ),
+                              );
+                              break;
+                            case 'main3':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CartPage(),
+                                ),
+                              );
+                              break;
+                            case 'main4':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OffersPage(),
+                                ),
+                              );
+                              break;
+                            case 'main5':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CartPage(),
+                                ),
+                              );
+                              break;
+                            case 'main6':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OffersPage(),
+                                ),
+                              );
+                              break;
+                            case 'main7':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CartPage(),
+                                ),
+                              );
+                              break;
+                            case 'main8':
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OffersPage(),
+                                ),
+                              );
+                              break;
+                            default:
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Invalid route')),
+                              );
+                          }
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.network(
+                              imageUrl,
+                              width: 190.0,
+                              height: 190.0,
+                              fit: BoxFit.cover,
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 2.0),
+                            SizedBox(
+                              width: 190.0,
+                              child: Text(
+                                name,
+                                style: const TextStyle(
+                                  fontSize: 13.0,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                textAlign: TextAlign.start,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),
@@ -82,6 +166,68 @@ class NikeShoesWidget extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class ShoeDetailsPage extends StatelessWidget {
+  final String name;
+  final String imageUrl;
+
+  const ShoeDetailsPage({
+    super.key,
+    required this.name,
+    required this.imageUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(name),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.network(
+              imageUrl,
+              fit: BoxFit.cover,
+              height: 300.0,
+            ),
+            const SizedBox(height: 20.0),
+            Text(
+              name,
+              style: const TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CartPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Cart Page')),
+      body: const Center(child: Text('Cart Page Content')),
+    );
+  }
+}
+
+class OffersPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Offers Page')),
+      body: const Center(child: Text('Offers Page Content')),
     );
   }
 }
