@@ -111,7 +111,7 @@ class _MainPageState extends State<MainPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>  SignUpPage(),
+                              builder: (context) =>  const SignUpPage(),
                             ),
                           );
                         },

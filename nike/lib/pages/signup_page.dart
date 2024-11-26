@@ -85,101 +85,103 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 75.0),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Image.asset(
-                    'lib/assets/nikeblack.png',
-                    height: 60.0,
-                  ),
-                ),
-                Image.asset(
-                  'lib/assets/jordan.png',
-                  height: 60.0,
-                ),
-              ],
-            ),
-            const SizedBox(height: 20.0),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 36.0),
-              child: Text(
-                'Enter your email to join us or \nsign up.',
-                style: TextStyle(fontSize: 28.0),
-              ),
-            ),
-            const SizedBox(height: 35.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 36.0),
-              child: CustomTextField(
-                labelText: 'Email*',
-                controller: _emailController,
-              ),
-            ),
-            const SizedBox(height: 20.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 36.0),
-              child: CustomTextField(
-                labelText: 'Password*',
-                controller: _passwordController,
-                isPassword: true,
-              ),
-            ),
-            const SizedBox(height: 20.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 36.0),
-              child: CustomTextField(
-                labelText: 'Confirm Password*',
-                controller: _confirmpasswordController,
-                isPassword: true,
-              ),
-            ),
-            const SizedBox(height: 40.0),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 36.0),
-              child: Text(
-                'By Continuing, I agree to Nike Privacy \nPolicy and Terms of Use',
-                style: TextStyle(fontSize: 15.0),
-              ),
-            ),
-            const SizedBox(height: 30.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 36.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 75.0),
+              Row(
                 children: [
-                  ElevatedButton(
-                    onPressed: _isLoading ? null : _signUp,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 25.0,
-                        vertical: 15.0,
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      side: const BorderSide(
-                        width: 1.0,
-                        color: Colors.white,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Image.asset(
+                      'lib/assets/nikeblack.png',
+                      height: 60.0,
                     ),
-                    child: _isLoading
-                        ? const CircularProgressIndicator(
-                            color: Colors.white,
-                          )
-                        : const Text('Continue'),
+                  ),
+                  Image.asset(
+                    'lib/assets/jordan.png',
+                    height: 60.0,
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 20.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 36.0),
+                child: Text(
+                  'Enter your email to join us or \nsign up.',
+                  style: TextStyle(fontSize: 28.0),
+                ),
+              ),
+              const SizedBox(height: 35.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 36.0),
+                child: CustomTextField(
+                  labelText: 'Email*',
+                  controller: _emailController,
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 36.0),
+                child: CustomTextField(
+                  labelText: 'Password*',
+                  controller: _passwordController,
+                  isPassword: true,
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 36.0),
+                child: CustomTextField(
+                  labelText: 'Confirm Password*',
+                  controller: _confirmpasswordController,
+                  isPassword: true,
+                ),
+              ),
+              const SizedBox(height: 40.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 36.0),
+                child: Text(
+                  'By Continuing, I agree to Nike Privacy \nPolicy and Terms of Use',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+              ),
+              const SizedBox(height: 30.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 36.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _isLoading ? null : _signUp,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 25.0,
+                          vertical: 15.0,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        side: const BorderSide(
+                          width: 1.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : const Text('Continue'),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
