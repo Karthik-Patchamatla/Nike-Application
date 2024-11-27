@@ -65,14 +65,17 @@ class NikeSport extends StatelessWidget {
                               ),
                             );
                             break;
-                          // case 'Basketball':
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => const CartPage(),
-                          //     ),
-                          //   );
-                          //   break;
+                          case 'Basketball':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ItemGrid(
+                                  collectionName: 'basketball',
+                                  appBarTitle: name,
+                                ),
+                              ),
+                            );
+                            break;
                           // case 'Dance':
                           //   Navigator.push(
                           //     context,
