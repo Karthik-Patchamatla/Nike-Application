@@ -71,7 +71,7 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => CartPage(),
+                                  builder: (context) => const CartPage(),
                                 ),
                               );
                               break;
@@ -79,7 +79,7 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => OffersPage(),
+                                  builder: (context) => const OffersPage(),
                                 ),
                               );
                               break;
@@ -87,7 +87,7 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => CartPage(),
+                                  builder: (context) => const CartPage(),
                                 ),
                               );
                               break;
@@ -95,7 +95,7 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => OffersPage(),
+                                  builder: (context) => const OffersPage(),
                                 ),
                               );
                               break;
@@ -103,7 +103,7 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => CartPage(),
+                                  builder: (context) => const CartPage(),
                                 ),
                               );
                               break;
@@ -111,7 +111,7 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => OffersPage(),
+                                  builder: (context) => const OffersPage(),
                                 ),
                               );
                               break;
@@ -119,7 +119,7 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => CartPage(),
+                                  builder: (context) => const CartPage(),
                                 ),
                               );
                               break;
@@ -127,7 +127,7 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => OffersPage(),
+                                  builder: (context) => const OffersPage(),
                                 ),
                               );
                               break;
