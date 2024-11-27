@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nike/pages/just_dropped.dart';
+import 'package:nike/components/shoe_template.dart';
 
 class NikeShoesWidget extends StatelessWidget {
   const NikeShoesWidget({super.key});
@@ -20,7 +20,6 @@ class NikeShoesWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10.0),
-
           FutureBuilder<QuerySnapshot>(
             future: FirebaseFirestore.instance.collection('nike').get(),
             builder: (context, snapshot) {
@@ -45,7 +44,8 @@ class NikeShoesWidget extends StatelessWidget {
                   children: documents.map((doc) {
                     var name = doc['name'];
                     var imageUrl = doc['image'];
-                    var route = doc['route']; // Fetch route field from Firestore
+                    var route =
+                        doc['route']; // Fetch route field from Firestore
 
                     return Padding(
                       padding: const EdgeInsets.only(right: 5.0),
@@ -57,11 +57,15 @@ class NikeShoesWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => JustDropped(
-                                    name: name,
+                                  builder: (context) => ItemGrid(
+                                    collectionName:
+                                        'justdropped',
+                                    appBarTitle:
+                                        name,
                                   ),
                                 ),
                               );
+
                               break;
                             case 'main1':
                               Navigator.push(
@@ -213,6 +217,8 @@ class ShoeDetailsPage extends StatelessWidget {
 }
 
 class CartPage extends StatelessWidget {
+  const CartPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -223,6 +229,8 @@ class CartPage extends StatelessWidget {
 }
 
 class OffersPage extends StatelessWidget {
+  const OffersPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
