@@ -33,6 +33,16 @@ class _ItemGridState extends State<ItemGrid> {
             color: Colors.black,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.shopping_bag_outlined),
+          ),
+        ],
       ),
       body: FutureBuilder<QuerySnapshot>(
         future: FirebaseFirestore.instance.collection(widget.collectionName).get(),
