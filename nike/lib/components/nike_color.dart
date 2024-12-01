@@ -74,6 +74,28 @@ class NikeColor extends StatelessWidget {
                               ),
                             );
                             break;
+                          case 'EarthyNeutrals':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ItemGrid(
+                                  collectionName: 'colorearthyneutrals',
+                                  appBarTitle: name,
+                                ),
+                              ),
+                            );
+                            break;
+                          case 'TropicalSeaform':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ItemGrid(
+                                  collectionName: 'colorseaform',
+                                  appBarTitle: name,
+                                ),
+                              ),
+                            );
+                            break;
                           default:
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Invalid route')),
