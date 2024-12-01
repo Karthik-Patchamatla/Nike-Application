@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nike/components/shoe_template.dart';
 
 class NikeColor extends StatelessWidget {
   const NikeColor({super.key});
@@ -45,31 +46,65 @@ class NikeColor extends StatelessWidget {
                   children: documents.map((doc) {
                     final name = doc['name']; // Field: name
                     final imageUrl = doc['image']; // Field: image
+                    final route = doc['route']; // Field: route for navigation
 
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, // Align to start
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: Image.network(
-                              imageUrl,
-                              width: 230.0,
-                              height: 300.0,
-                              fit: BoxFit.cover,
+                    return GestureDetector(
+                      onTap: () {
+                        // Handle navigation based on route
+                        switch (route) {
+                          case 'OceanBlue':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ItemGrid(
+                                  collectionName: 'color',
+                                  appBarTitle: name,
+                                ),
+                              ),
+                            );
+                            break;
+                          case 'LightSlateGrey':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ItemGrid(
+                                  collectionName: 'colorgrey',
+                                  appBarTitle: name,
+                                ),
+                              ),
+                            );
+                            break;
+                          default:
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Invalid route')),
+                            );
+                        }
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image.network(
+                                imageUrl,
+                                width: 230.0,
+                                height: 300.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 5.0),
-                          Text(
-                            name,
-                            style: const TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(height: 5.0),
+                            Text(
+                              name,
+                              style: const TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.start,
                             ),
-                            textAlign: TextAlign.start,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),
