@@ -131,6 +131,17 @@ class NikeSport extends StatelessWidget {
                               ),
                             );
                             break;
+                          case 'Yoga':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ItemGrid(
+                                  collectionName: 'yoga',
+                                  appBarTitle: name,
+                                ),
+                              ),
+                            );
+                            break;
                           default:
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Invalid route')),
