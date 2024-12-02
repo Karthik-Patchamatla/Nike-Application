@@ -80,16 +80,8 @@ class _ItemGridState extends State<ItemGrid> {
               bool isLiked = likedItems[index] ?? false;
 
               return Container(
-                decoration: BoxDecoration(
-                  color: Colors.white, // Card background color
-                  borderRadius: BorderRadius.circular(10.0),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 6.0,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
+                decoration: const BoxDecoration(
+                  color: Colors.transparent, // Card background color
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +89,7 @@ class _ItemGridState extends State<ItemGrid> {
                     // Image container with uniform background
                     Container(
                       width: double.infinity,
-                      height: 180.0,
+                      height: 200.0,
                       decoration: BoxDecoration(
                         color: Colors.grey[200], // Uniform background color
                         borderRadius: const BorderRadius.vertical(
@@ -108,13 +100,10 @@ class _ItemGridState extends State<ItemGrid> {
                         children: [
                           // Image
                           ClipRRect(
-                            borderRadius: const BorderRadius.vertical(
-                              top: Radius.circular(10.0),
-                            ),
                             child: Image.network(
                               imageUrl,
                               width: double.infinity,
-                              height: 180.0,
+                              height: 200.0,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -133,7 +122,7 @@ class _ItemGridState extends State<ItemGrid> {
                                 backgroundColor: Colors.white.withOpacity(0.7),
                                 child: Icon(
                                   isLiked ? Icons.favorite : Icons.favorite_border,
-                                  color: isLiked ? Colors.black : Colors.grey,
+                                  color: isLiked ? Colors.black : Colors.black,
                                 ),
                               ),
                             ),
@@ -141,7 +130,7 @@ class _ItemGridState extends State<ItemGrid> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 8.0),
+                    const SizedBox(height: 10.0),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Column(
@@ -158,24 +147,24 @@ class _ItemGridState extends State<ItemGrid> {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2, // Allow up to 2 lines for name
                           ),
-                          const SizedBox(height: 4.0),
+                          const SizedBox(height: 2.0),
                           // Item Description
                           Text(
                             itemDescription,
                             style: const TextStyle(
-                              fontSize: 14.0,
+                              fontSize: 13.0,
                               color: Colors.black54,
                             ),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3, // Allow up to 3 lines for description
                           ),
-                          const SizedBox(height: 6.0),
+                          const SizedBox(height: 4.0),
                           // MRP Price
                           Text(
                             'MRP: ₹ $itemPrice',
                             style: const TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
