@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nike/components/detail_page.dart';
 
 class ItemGrid extends StatefulWidget {
   final String collectionName;
@@ -63,10 +64,10 @@ class _ItemGridState extends State<ItemGrid> {
           return GridView.builder(
             padding: const EdgeInsets.all(10.0),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // Two columns per row
-              crossAxisSpacing: 15.0, // Increase spacing between columns
-              mainAxisSpacing: 20.0, // Increase spacing between rows
-              childAspectRatio: 0.65, // Adjust for better layout
+              crossAxisCount: 2,
+              crossAxisSpacing: 15.0,
+              mainAxisSpacing: 20.0,
+              childAspectRatio: 0.65,
             ),
             itemCount: documents.length,
             itemBuilder: (context, index) {
@@ -75,103 +76,123 @@ class _ItemGridState extends State<ItemGrid> {
               var itemDescription = doc['Description'];
               var itemPrice = doc['MRP'];
               var imageUrl = doc['image'];
+              var imageUrl1 = doc['image1'];
+              var imageUrl2 = doc['image2'];
+              var imageUrl3 = doc['image3'];
+              var imageUrl4 = doc['image4'];
+              var desc1 = doc['d1'];
+              var desc2 = doc['d2'];
+              var desc3 = doc['d3'];
 
               // Initialize isLiked for the current item if it's not already set
               bool isLiked = likedItems[index] ?? false;
 
-              return Container(
-                decoration: const BoxDecoration(
-                  color: Colors.transparent, // Card background color
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Image container with uniform background
-                    Container(
-                      width: double.infinity,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200], // Uniform background color
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(10.0),
-                        ),
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailPage(
+                        name: itemName,
+                        description: itemDescription,
+                        price: itemPrice,
+                        imageUrl: imageUrl,
+                        imageUrl1: imageUrl1,
+                        imageUrl2: imageUrl2,
+                        imageUrl3: imageUrl3,
+                        imageUrl4: imageUrl4,
+                        desc1: desc1,
+                        desc2: desc2,
+                        desc3: desc3,
                       ),
-                      child: Stack(
-                        children: [
-                          // Image
-                          ClipRRect(
-                            child: Image.network(
-                              imageUrl,
-                              width: double.infinity,
-                              height: 200.0,
-                              fit: BoxFit.cover,
+                    ),
+                  );
+                },
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                        ),
+                        child: Stack(
+                          children: [
+                            ClipRRect(
+                              child: Image.network(
+                                imageUrl,
+                                width: double.infinity,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          // Like button
-                          Positioned(
-                            top: 10.0,
-                            right: 10.0,
-                            child: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  likedItems[index] = !isLiked;
-                                });
-                              },
-                              child: CircleAvatar(
-                                radius: 20.0,
-                                backgroundColor: Colors.white.withOpacity(0.7),
-                                child: Icon(
-                                  isLiked ? Icons.favorite : Icons.favorite_border,
-                                  color: isLiked ? Colors.black : Colors.black,
+                            Positioned(
+                              top: 10.0,
+                              right: 10.0,
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    likedItems[index] = !isLiked;
+                                  });
+                                },
+                                child: CircleAvatar(
+                                  radius: 20.0,
+                                  backgroundColor: Colors.white.withOpacity(0.7),
+                                  child: Icon(
+                                    isLiked ? Icons.favorite : Icons.favorite_border,
+                                    color: isLiked ? Colors.black : Colors.black,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10.0),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Item Name
-                          Text(
-                            itemName,
-                            style: const TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                      const SizedBox(height: 10.0),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              itemName,
+                              style: const TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
                             ),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2, // Allow up to 2 lines for name
-                          ),
-                          const SizedBox(height: 2.0),
-                          // Item Description
-                          Text(
-                            itemDescription,
-                            style: const TextStyle(
-                              fontSize: 13.0,
-                              color: Colors.black54,
+                            const SizedBox(height: 2.0),
+                            Text(
+                              itemDescription,
+                              style: const TextStyle(
+                                fontSize: 13.0,
+                                color: Colors.black54,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
                             ),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 3, // Allow up to 3 lines for description
-                          ),
-                          const SizedBox(height: 4.0),
-                          // MRP Price
-                          Text(
-                            'MRP: ₹ $itemPrice',
-                            style: const TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                            const SizedBox(height: 4.0),
+                            Text(
+                              'MRP: ₹ $itemPrice',
+                              style: const TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
