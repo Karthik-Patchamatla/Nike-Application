@@ -116,7 +116,8 @@ class _DetailPageState extends State<DetailPage> {
                       height: 8.0,
                       width: 8.0,
                       decoration: BoxDecoration(
-                        color: _currentPage == index ? Colors.black : Colors.grey,
+                        color:
+                            _currentPage == index ? Colors.black : Colors.grey,
                         borderRadius: BorderRadius.circular(4.0),
                       ),
                     );
@@ -153,10 +154,50 @@ class _DetailPageState extends State<DetailPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              'Price: ₹ ${widget.price}',
+              'MRP:  ₹ ${widget.price}',
               style: const TextStyle(
                 fontSize: 20.0,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          const SizedBox(height: 20.0),
+          SizedBox(
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                ),
+                child: const Text('Add to Cart'),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 15.0),
+          SizedBox(
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50.0),
+                    side: const BorderSide(
+                      color: Colors.black,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+                child: const Text('Favorite'),
               ),
             ),
           ),
